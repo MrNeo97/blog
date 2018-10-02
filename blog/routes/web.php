@@ -11,20 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-
-	$posts = App\Post::latest('published_at')->get();
-
-    return view('welcome', compact('posts')); //va a mandar un array asi ['posts' => $posts]
-});
+Route::get('/', 'PagesController@home');
 
 Route::get('posts', function(){
 	return App\Post::all(); //el app delante porque en app/Post.php tenemos un namespace llamado App
 });
 
-Route::get('home', function(){
-	return view('admin.dashboard');
-})->middleware('auth');
+Route::group([
+    'prefix' => 'admin',
+    'namespace' => 'Admin',
+    'middleware' => 'auth'],
+function(){
+
+    Route::get('/', 'AdminController@index')->name('dashboard');
+    Route::get('posts', 'PostsController@index')->name('admin.posts.index');
+});
+
+
 
  // Authentication Routes...
         Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
