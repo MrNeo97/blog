@@ -7,7 +7,7 @@
 		<small>Listado</small>
 	</h1>
   <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i>Inicio</a></li>
+    <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i>Inicio</a></li>
     <li class="active">Posts</li>
   </ol>
 
@@ -17,9 +17,10 @@
 
 	          <!-- /.box -->
 
-          <div class="box">
+          <div class="box box-primary">
             <div class="box-header">
               <h3 class="box-title">Listado de publicaciones</h3>
+              <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> Crear publicación</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -57,3 +58,34 @@
           <!-- /.box -->
 
 @stop 
+
+@push('styles')
+
+  <!-- DataTables -->
+  <link rel="stylesheet" href="/adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
+@endpush
+
+
+@push('scripts')
+
+
+<!-- DataTables -->
+<script src="/adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+<script>
+  $(function () {
+    $('#post-table').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
+
+
+@endpush

@@ -24,7 +24,6 @@ header nav li a:hover{
 	width: 150px;
 }
 
-
 .post{
 	background: #fff;
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
@@ -267,7 +266,18 @@ a.btn-bar{
           right: 7px;
           
       }
-      
-      
 
+      .buttons-social-media-share {
+      	margin-bottom: 20px;
+      }
 
+      .buttons-social-media-share .share-buttons {
+      	margin: 0;
+      	padding: 0;
+      }
+      
+      .buttons-social-media-share .share-buttons li {
+      	list-style-type: none;
+      	float: left;
+      	margin-right: 10px;
+      }

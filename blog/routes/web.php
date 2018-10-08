@@ -13,6 +13,8 @@
 
 Route::get('/', 'PagesController@home');
 
+Route::get('blog/{post}', 'PostsController@show');
+
 Route::get('posts', function(){
 	return App\Post::all(); //el app delante porque en app/Post.php tenemos un namespace llamado App
 });
@@ -25,6 +27,10 @@ function(){
 
     Route::get('/', 'AdminController@index')->name('dashboard');
     Route::get('posts', 'PostsController@index')->name('admin.posts.index');
+    Route::get('posts/create', 'PostsController@create')->name('admin.posts.create');
+    Route::post('posts', 'PostsController@store')->name('admin.posts.store');
+    Route::get('posts/{post}', 'PostsController@edit')->name('admin.posts.edit');
+    Route::put('posts/{post}', 'PostsController@update')->name('admin.posts.update');
 });
 
 

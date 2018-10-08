@@ -17,7 +17,6 @@ class CreatePostTagTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('post_id'); // unsignedInteger para que solo acepte numero positivos
             $table->unsignedInteger('tag_id');
-            $table->timestamps();
         });
     }
 
